@@ -1,13 +1,12 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
-    
-    [HideInInspector] public Vector2 moveInput;
-    [HideInInspector] public float lastHorizontalVector;
-    [HideInInspector] public float lastVerticalVector;
-    
+
+    public Vector2 MoveInput { get; private set; }
+    public float LastHorizontalVector { get; private set;}
     private Rigidbody2D _playerRigidbody;
     
     private void Start()
@@ -30,14 +29,13 @@ public class PlayerMovement : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
         
-        moveInput = new Vector2(moveX, moveY).normalized;
+        MoveInput = new Vector2(moveX, moveY).normalized;
 
-        if (moveInput.x != 0) lastHorizontalVector = moveX;
-        if (moveInput.y != 0) lastVerticalVector = moveY;
+        if (MoveInput.x != 0) LastHorizontalVector = moveX;
     }
     
     private void Move()
     {
-        _playerRigidbody.linearVelocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
+        _playerRigidbody.linearVelocity = new Vector2(MoveInput.x * moveSpeed, MoveInput.y * moveSpeed);
     }
 }

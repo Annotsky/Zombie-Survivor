@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
+    private static readonly int Move = Animator.StringToHash("Move");
     private Animator _animator;
     private PlayerMovement _playerMovement;
     private SpriteRenderer _spriteRenderer;
@@ -15,16 +16,21 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Update()
     {
-        if (_playerMovement.moveInput.x != 0 || _playerMovement.moveInput.y != 0)
+        MoveAnimation();
+    }
+
+    private void MoveAnimation()
+    {
+        if (_playerMovement.MoveInput.x != 0 || _playerMovement.MoveInput.y != 0)
         {
-            _animator.SetBool("Move", true);
+            _animator.SetBool(Move, true);
             FlipSprite();
         }
-        else _animator.SetBool("Move", false);
+        else _animator.SetBool(Move, false);
     }
-    
+
     private void FlipSprite()
     {
-        _spriteRenderer.flipX = _playerMovement.lastHorizontalVector < 0;
+        _spriteRenderer.flipX = _playerMovement.LastHorizontalVector < 0;
     }
 }
