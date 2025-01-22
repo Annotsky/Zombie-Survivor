@@ -7,9 +7,10 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector2 MoveInput { get; private set; }
     public float LastHorizontalVector { get; private set;}
+    
     private Rigidbody2D _playerRigidbody;
     
-    private void Start()
+    private void Awake()
     {
         _playerRigidbody = GetComponent<Rigidbody2D>();
     }

@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    private static readonly int Move = Animator.StringToHash("Move");
     private Animator _animator;
     private PlayerMovement _playerMovement;
     private SpriteRenderer _spriteRenderer;
+    private static readonly int Move = Animator.StringToHash("Move");
     
-    private void Start()
+    private void Awake()
     {
         _animator = GetComponent<Animator>();
         _playerMovement = GetComponent<PlayerMovement>();
