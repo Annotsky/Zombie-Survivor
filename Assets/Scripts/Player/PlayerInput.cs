@@ -4,6 +4,9 @@ public class PlayerInput : MonoBehaviour
 {
     public Vector2 MoveInput { get; private set; }
     public float LastHorizontalVector { get; private set; }
+    
+    private const string HorizontalAxis = "Horizontal";
+    private const string VerticalAxis = "Vertical";
 
     private void Update()
     {
@@ -12,11 +15,16 @@ public class PlayerInput : MonoBehaviour
 
     private void HandleInput()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        float moveX = Input.GetAxisRaw(HorizontalAxis);
+        float moveY = Input.GetAxisRaw(VerticalAxis);
 
         MoveInput = new Vector2(moveX, moveY).normalized;
 
+        UpdateLastHorizontalVector(moveX);
+    }
+
+    private void UpdateLastHorizontalVector(float moveX)
+    {
         if (MoveInput.x != 0) 
             LastHorizontalVector = moveX;
     }

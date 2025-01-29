@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float _moveSpeed = 5f;
     
     private Rigidbody2D _playerRigidbody;
     private PlayerInput _playerInput;
@@ -23,6 +23,6 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         Vector2 moveInput = _playerInput.MoveInput;
-        _playerRigidbody.linearVelocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
+        _playerRigidbody.linearVelocity = new Vector2(moveInput.x * _moveSpeed, moveInput.y * _moveSpeed);
     }
 }
