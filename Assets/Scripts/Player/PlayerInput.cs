@@ -20,10 +20,10 @@ public class PlayerInput : MonoBehaviour
 
         MoveInput = new Vector2(moveX, moveY).normalized;
 
-        UpdateLastHorizontalVector(moveX);
+        SetLastHorizontalVector(moveX);
     }
 
-    private void UpdateLastHorizontalVector(float moveX)
+    private void SetLastHorizontalVector(float moveX)
     {
         if (MoveInput.x != 0) 
             LastHorizontalVector = moveX;
